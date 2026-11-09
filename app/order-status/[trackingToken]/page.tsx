@@ -358,13 +358,13 @@ export default function OrderTrackingPage({ params }: PageProps) {
               {order.payment_status !== "paid" ? (
                 <Button
                   onClick={() => setIsPayModalOpen(true)}
-                  className="flex-1 gap-2 py-6 text-sm font-bold shadow-xl shadow-emerald/20"
+                  className="flex-1 gap-2 min-h-[48px] py-3 text-sm font-bold shadow-xl shadow-emerald/20 transition-all active:scale-[0.99]"
                 >
                   <CreditCard className="h-4 w-4" />
                   <span>Pay Bill with Razorpay ({formatCurrency(remainingBalance)})</span>
                 </Button>
               ) : (
-                <div className="flex-1 p-3 rounded-xl bg-emerald/20 border border-emerald/50 flex items-center justify-center gap-2 text-xs font-bold text-emerald-light">
+                <div className="flex-1 p-3.5 rounded-xl bg-emerald/20 border border-emerald/50 flex items-center justify-center gap-2 text-xs font-bold text-emerald-light">
                   <CheckCircle2 className="h-4 w-4 text-emerald" />
                   <span>Paid in Full • Thank You for Dining with Us</span>
                 </div>
@@ -373,7 +373,7 @@ export default function OrderTrackingPage({ params }: PageProps) {
               <Button
                 variant="outline"
                 onClick={() => setIsReceiptModalOpen(true)}
-                className="gap-2 text-xs border-charcoal-border hover:bg-charcoal-surface"
+                className="gap-2 text-xs border-charcoal-border hover:bg-charcoal-surface min-h-[48px] sm:min-h-[44px]"
               >
                 <Printer className="h-4 w-4" /> View Digital Receipt
               </Button>

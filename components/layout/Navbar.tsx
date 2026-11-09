@@ -52,62 +52,65 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-cream hover:bg-charcoal-surface rounded-lg"
+            className="p-2.5 text-cream hover:bg-charcoal-surface rounded-xl transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center border border-charcoal-border/60"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-5 w-5 text-emerald" /> : <Menu className="h-5 w-5 text-cream" />}
           </button>
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-charcoal-border bg-charcoal-card px-4 pt-3 pb-6 space-y-4">
-          <nav className="flex flex-col space-y-3 text-base font-medium text-charcoal-muted">
+        <div className="md:hidden border-b border-charcoal-border bg-charcoal-card/95 backdrop-blur-xl px-5 pt-3 pb-6 space-y-4 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col space-y-1 text-sm font-medium text-charcoal-muted">
             <Link
               href="#features"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 hover:text-cream"
+              className="px-3 py-2.5 rounded-xl hover:text-cream hover:bg-charcoal-surface transition-colors"
             >
               Features
             </Link>
             <Link
               href="#how-it-works"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 hover:text-cream"
+              className="px-3 py-2.5 rounded-xl hover:text-cream hover:bg-charcoal-surface transition-colors"
             >
               How It Works
             </Link>
             <Link
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 hover:text-cream"
+              className="px-3 py-2.5 rounded-xl hover:text-cream hover:bg-charcoal-surface transition-colors"
             >
               Pricing
             </Link>
             <Link
               href="/menu/demo-restaurant"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 text-emerald font-semibold"
+              className="px-3 py-2.5 rounded-xl text-emerald font-semibold hover:bg-emerald/10 transition-colors flex items-center justify-between"
             >
-              Customer Menu Demo
+              <span>Customer Menu Demo</span>
+              <span className="text-[10px] bg-emerald/20 text-emerald-light px-2 py-0.5 rounded-full font-bold">
+                Live
+              </span>
             </Link>
             <Link
               href="#faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-2 py-1.5 hover:text-cream"
+              className="px-3 py-2.5 rounded-xl hover:text-cream hover:bg-charcoal-surface transition-colors"
             >
               FAQ
             </Link>
           </nav>
           <div className="pt-2 flex flex-col gap-2.5">
             <Link href="/login" onClick={() => setMobileMenuOpen(false)} className="w-full">
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full h-11 border-charcoal-border">
                 Sign In
               </Button>
             </Link>
             <Link href="/signup" onClick={() => setMobileMenuOpen(false)} className="w-full">
-              <Button className="w-full">
+              <Button className="w-full h-11 bg-emerald text-white hover:bg-emerald-light font-bold">
                 Get Started
               </Button>
             </Link>

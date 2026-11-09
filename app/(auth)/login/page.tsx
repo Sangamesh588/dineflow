@@ -161,7 +161,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto space-y-4">
+    <div className="w-full max-w-xl mx-auto space-y-4 px-1 sm:px-0">
       {/* Unified Tab Switcher: Option A (User) vs Option B (Shop) */}
       <div className="grid grid-cols-2 p-1.5 rounded-2xl bg-charcoal-card border border-charcoal-border shadow-xl">
         <button
@@ -171,7 +171,7 @@ export default function LoginPage() {
             setAuthError(null);
             setCustomerError(null);
           }}
-          className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+          className={`flex items-center justify-center gap-2.5 py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold min-h-[48px] transition-all ${
             mode === "customer"
               ? "bg-emerald text-white shadow-md shadow-emerald/20"
               : "text-charcoal-muted hover:text-cream hover:bg-charcoal-surface"
@@ -197,7 +197,7 @@ export default function LoginPage() {
             setAuthError(null);
             setCustomerError(null);
           }}
-          className={`flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+          className={`flex items-center justify-center gap-2.5 py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-bold min-h-[48px] transition-all ${
             mode === "shop"
               ? "bg-emerald text-white shadow-md shadow-emerald/20"
               : "text-charcoal-muted hover:text-cream hover:bg-charcoal-surface"
@@ -248,16 +248,16 @@ export default function LoginPage() {
                   <Search className="h-3.5 w-3.5 text-emerald" />
                   <span>Browse Digital Restaurant Menu</span>
                 </div>
-                <form onSubmit={handleBrowseMenu} className="flex gap-2">
+                <form onSubmit={handleBrowseMenu} className="flex flex-col sm:flex-row gap-2">
                   <Input
                     placeholder="Enter restaurant slug (e.g. demo-restaurant)"
                     value={restaurantSlug}
                     onChange={(e) => setRestaurantSlug(e.target.value)}
-                    className="text-xs bg-charcoal border-charcoal-border focus-visible:ring-emerald"
+                    className="text-sm bg-charcoal border-charcoal-border focus-visible:ring-emerald h-11 sm:h-10"
                   />
-                  <Button type="submit" size="sm" className="bg-emerald text-white hover:bg-emerald-light shrink-0">
+                  <Button type="submit" size="sm" className="bg-emerald text-white hover:bg-emerald-light shrink-0 h-11 sm:h-10 font-semibold px-4">
                     Open Menu
-                    <ArrowRight className="h-3.5 w-3.5 ml-1" />
+                    <ArrowRight className="h-4 w-4 ml-1.5" />
                   </Button>
                 </form>
 
@@ -290,16 +290,16 @@ export default function LoginPage() {
                 <p className="text-[11px] text-charcoal-muted">
                   Check kitchen preparation, table serving status, and split bill payments.
                 </p>
-                <form onSubmit={handleTrackOrder} className="flex gap-2">
+                <form onSubmit={handleTrackOrder} className="flex flex-col sm:flex-row gap-2">
                   <Input
                     placeholder="Enter 8-digit tracking token (e.g. track_demo_101)"
                     value={orderTrackingToken}
                     onChange={(e) => setOrderTrackingToken(e.target.value)}
-                    className="text-xs bg-charcoal border-charcoal-border focus-visible:ring-emerald"
+                    className="text-sm bg-charcoal border-charcoal-border focus-visible:ring-emerald h-11 sm:h-10"
                   />
-                  <Button type="submit" size="sm" variant="outline" className="shrink-0 border-emerald/40 text-emerald hover:bg-emerald/10">
+                  <Button type="submit" size="sm" variant="outline" className="shrink-0 border-emerald/40 text-emerald hover:bg-emerald/10 h-11 sm:h-10 font-semibold px-4">
                     Track
-                    <Clock className="h-3.5 w-3.5 ml-1" />
+                    <Clock className="h-4 w-4 ml-1.5" />
                   </Button>
                 </form>
               </div>
@@ -354,7 +354,7 @@ export default function LoginPage() {
                     placeholder="owner@restaurant.com or staff@dineflow.com"
                     {...register("email")}
                     disabled={isLoading}
-                    className={`bg-charcoal-surface border-charcoal-border text-cream text-xs ${
+                    className={`bg-charcoal-surface border-charcoal-border text-cream text-sm h-11 sm:h-10 ${
                       errors.email ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-emerald"
                     }`}
                   />
@@ -369,7 +369,7 @@ export default function LoginPage() {
                     <label className="text-xs font-semibold text-cream">Password</label>
                     <Link
                       href="/forgot-password"
-                      className="text-xs text-emerald hover:underline font-medium"
+                      className="text-xs text-emerald hover:underline font-medium py-1"
                     >
                       Forgot password?
                     </Link>
@@ -380,15 +380,16 @@ export default function LoginPage() {
                       placeholder="••••••••"
                       {...register("password")}
                       disabled={isLoading}
-                      className={`bg-charcoal-surface border-charcoal-border text-cream text-xs pr-10 ${
+                      className={`bg-charcoal-surface border-charcoal-border text-cream text-sm h-11 sm:h-10 pr-11 ${
                         errors.password ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-emerald"
                       }`}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-muted hover:text-cream"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center text-charcoal-muted hover:text-cream rounded-lg transition-colors"
                       tabIndex={-1}
+                      aria-label={showPassword ? "Hide password" : "Show password"}
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
@@ -402,7 +403,7 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-emerald text-white hover:bg-emerald-light font-bold text-sm h-10 mt-2 shadow-lg shadow-emerald/20"
+                  className="w-full bg-emerald text-white hover:bg-emerald-light font-bold text-sm h-12 sm:h-11 mt-3 shadow-lg shadow-emerald/20 transition-all active:scale-[0.99]"
                 >
                   {isLoading ? (
                     <span className="flex items-center gap-2">
